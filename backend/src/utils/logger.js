@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
         colorize: true,
         translateTime: "yyyy-mm-dd HH:MM:ss",
         ignore: "pid,hostname",
-        messageFormat: "{levelLabel}: {msg}",
+        messageFormat: "{level}: {msg}",
       },
     })
   );

@@ -1,0 +1,15 @@
+{
+  "requiresAuth": true,
+  "config": "default",
+  "SERVER_PORT": "5002",
+  "userKeys": {
+    "public_key": "",
+    "private_key": {
+      "algorithm": "ed25519",
+      "payload": ""
+    }
+  },
+  "API-FOOTBALL": {
+    "url": "https://v3.football.api-sports.io"
+  }
+}

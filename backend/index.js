@@ -1,30 +1,26 @@
-const express = require("express");
-const axios = require("axios");
-const cors = require("cors");
+"use strict";
 require("dotenv").config();
 
+const express = require("express");
+
+const helmet = require("helmet");
+const cors = require("cors");
+const morgan = require("morgan");
+
 const app = express();
-const port = process.env.PORT || 3000;
+const port = config.get("SERVER_PORT") || 3000;
 
 app.use(cors());
+app.use(helmet());
 app.use(express.json());
 
-app.get("/api/matches", async (req, res) => {
-  try {
-    const response = await axios.get(
-      "https://v3.football.api-sports.io/fixtures",
-      {
-        headers: {
-          "x-rapidapi-key": process.env.API_FOOTBALL_KEY,
-          "x-rapidapi-host": "v3.football.api-sports.io",
-        },
-        params: { league: 128, season: 2024 },
-      }
-    );
-    res.json(response.data);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+// Logging HTTP requests in development mode
+const env = process.env.NODE_ENV;
+if (env === "development") {
+  app.use(morgan("dev"));
+}
+
+// Express routes setup
+require("./startup/routes")(app);
 
 app.listen(port, () => console.log(`Fulbo API running on port ${port}`));

@@ -1,4 +1,4 @@
-const apiFootballService = require("../services/apiFootballService");
+const apiFootballService = require("../services/apiFootball.srv");
 
 const asyncHandler = require("../utils/asyncHandler");
 
@@ -20,14 +20,12 @@ const getDailyFixtures = asyncHandler(async (req, res) => {
     res.json({
       success: true,
       data: fixtures.map((fixture) => ({
-        id: fixture.fixture.id,
-        date: fixture.fixture.date,
-        homeTeam: fixture.teams.home.name,
-        awayTeam: fixture.teams.away.name,
-        homeGoals: fixture.goals.home,
-        awayGoals: fixture.goals.away,
-        status: fixture.fixture.status.long,
-        venue: fixture.venue.name,
+        homeTeam: fixture.teams.home?.name || "Unknown",
+        awayTeam: fixture.teams.away?.name || "Unknown",
+        homeGoals: fixture.goals.home ?? null,
+        awayGoals: fixture.goals.away ?? null,
+        status: fixture.fixture.status.long || "Unknown",
+        venue: fixture.venue?.name || "Unknown",
       })),
     });
   } catch (error) {

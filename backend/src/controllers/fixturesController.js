@@ -1,11 +1,16 @@
 const apiFootballService = require("../services/apiFootballService");
 
-const getDailyFixtures = async (req, res) => {
+const asyncHandler = require("../utils/asyncHandler");
+
+const logger = require("../utils/logger");
+
+const getDailyFixtures = asyncHandler(async (req, res) => {
   try {
     const leagueId = "128"; // Liga Profesional Argentina
     const season = "2023"; // Temporada permitida
     const date = "2023-01-28"; // Fecha fija para pruebas (puede venir de req.query.date)
 
+    logger.info(`Handling request for daily fixtures: ${date}`);
     const fixtures = await apiFootballService.fetchFixturesByDate(
       leagueId,
       season,
@@ -28,6 +33,6 @@ const getDailyFixtures = async (req, res) => {
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
-};
+});
 
 module.exports = { getDailyFixtures };

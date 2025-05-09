@@ -1,14 +1,14 @@
 "use strict";
 
 const pino = require("pino");
-const config = require("config");
+// const config = require("config");
 
 // Determine log level based on environment
-const level = config.get("env") !== "production" ? "info" : "error";
+const level = process.env.NODE_ENV !== "production" ? "info" : "error";
 
 // Configure destinations
 const destinations = [];
-if (config.get("env") === "production") {
+if (process.env.NODE_ENV === "production") {
   // Log to files in production
   destinations.push(
     pino.destination({ dest: "logs/combined.log", sync: false, mkdir: true }), // All logs (info and above)

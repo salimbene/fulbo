@@ -6,6 +6,7 @@ const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
 const morgan = require("morgan");
+const config = require("config");
 
 const app = express();
 const port = config.get("SERVER_PORT") || 3000;
@@ -21,6 +22,6 @@ if (env === "development") {
 }
 
 // Express routes setup
-require("./startup/routes")(app);
+require("./src/startup/routes")(app);
 
 app.listen(port, () => console.log(`Fulbo API running on port ${port}`));

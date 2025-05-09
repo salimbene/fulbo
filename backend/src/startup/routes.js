@@ -1,9 +1,8 @@
 "use strict";
-require("express-async-errors");
 
 const error = require("../middlewares/error.mw");
 
-const fixturesRoutes = require("./routes/fixtures.routes");
+const fixturesRoutes = require("../routes/fixtures.routes");
 
 module.exports = function (app) {
   app.use("/api/fixtures", fixturesRoutes);

@@ -10,6 +10,6 @@
     }
   },
   "API-FOOTBALL": {
-    "url": "https://v3.football.api-sports.io"
+    "URL": "https://v3.football.api-sports.io"
   }
 }

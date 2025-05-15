@@ -8,7 +8,7 @@ module.exports = function (app) {
   app.use("/api/fixtures", fixturesRoutes);
 
   app.use("/", (req, res) => {
-    res.status(200).send("Hyperledger Iroha API is online.");
+    res.status(200).send("fulbo is online.");
   });
 
   app.use(error);

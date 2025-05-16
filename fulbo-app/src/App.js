@@ -1,5 +1,5 @@
-import Fixtures from "./Fixtures";
-import "./index.css";
+import Fixtures from './components/Fixtures';
+import './index.css';
 
 function App() {
   return (
